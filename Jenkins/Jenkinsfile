@@ -10,15 +10,15 @@ pipeline {
             }
         }
 
-        stage('Build') {
+	stage('Test') {
             steps {
-                echo 'Building project...'
+                echo 'Running tests...'
             }
         }
 
-        stage('Test') {
+        stage('Build') {
             steps {
-                echo 'Running tests...'
+                echo 'Building project...'
             }
         }
 
