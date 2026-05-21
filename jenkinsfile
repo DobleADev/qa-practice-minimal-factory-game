@@ -1,11 +1,11 @@
-
 pipeline {
     agent { label 'win11' }
 
     stages {
         stage('Checkout') {
             steps {
-                git credentialsId: 'github-creds',
+                git branch: 'main',
+                    credentialsId: 'github-creds',
                     url: 'https://github.com/your-user/your-repo.git'
             }
         }
@@ -13,7 +13,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building project...'
-                // Example for Unity later
             }
         }
 
