@@ -37,7 +37,12 @@ pipeline {
     // }
 
     post {
-        setGitHubPullRequestStatus context: 'jenkins', message: '', state: 'SUCCESS'
+        success {
+            script
+            {
+                setGitHubPullRequestStatus context: 'jenkins', message: '', state: 'SUCCESS'
+            }
+        }
     }
 
 }
