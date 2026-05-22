@@ -27,15 +27,16 @@ pipeline {
         }
     }
 
+
     
     post {
-        success {
-            status context: 'continuous-integration/jenkins', state: 'SUCCESS'
+            success {
+                publishChecks name: 'continuous-integration/jenkins', conclusion: 'SUCCESS'
+            }
+            failure {
+                publishChecks name: 'continuous-integration/jenkins', conclusion: 'FAILURE'
+            }
         }
-        failure {
-            status context: 'continuous-integration/jenkins', state: 'FAILURE'
-        }
-    }
 
 
 }
