@@ -4,9 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main',
-                    credentialsId: 'ssh-jenkins',
-                    url: 'https://github.com/DobleADev/qa-practice-minimal-factory-game.git'
+                checkout scm
             }
         }
 
@@ -28,4 +26,15 @@ pipeline {
             }
         }
     }
+
+
+post {
+    success {
+        githubNotify context: 'jenkins', status: 'SUCCESS'
+    }
+    failure {
+        githubNotify context: 'jenkins', status: 'FAILURE'
+    }
+}
+
 }
