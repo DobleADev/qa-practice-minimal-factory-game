@@ -27,21 +27,12 @@ pipeline {
         }
     }
 
-    // post {
-    //     success {
-    //         publishChecks name: 'Jenkins', conclusion: 'SUCCESS'
-    //     }
-    //     failure {
-    //         publishChecks name: 'Jenkins', conclusion: 'FAILURE'
-    //     }
-    // }
-
     post {
         success {
-            script
-            {
-                setGitHubPullRequestStatus context: 'jenkins', message: '', state: 'SUCCESS'
-            }
+            publishChecks name: 'Jenkins CI', conclusion: 'SUCCESS'
+        }
+        failure {
+            publishChecks name: 'Jenkins CI', conclusion: 'FAILURE'
         }
     }
 
