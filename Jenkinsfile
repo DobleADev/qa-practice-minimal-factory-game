@@ -27,14 +27,15 @@ pipeline {
         }
     }
 
+    
+    post {
+        success {
+            setGitHubPullRequestStatus context: 'jenkins', status: 'SUCCESS'
+        }
+        failure {
+            setGitHubPullRequestStatus context: 'jenkins', status: 'FAILURE'
+        }
+    }
 
-post {
-    success {
-        githubNotify context: 'jenkins', status: 'SUCCESS'
-    }
-    failure {
-        githubNotify context: 'jenkins', status: 'FAILURE'
-    }
-}
 
 }
