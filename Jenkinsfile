@@ -37,11 +37,7 @@ pipeline {
     // }
 
     post {
-    success {
-        script {
-            sendGitHubStatus("success", "Jenkins passed", "Jenkins / Scan")
-            }
-        }
+        setGitHubPullRequestStatus context: 'jenkins', message: '', state: 'SUCCESS'
     }
 
 }
