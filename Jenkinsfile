@@ -27,12 +27,20 @@ pipeline {
         }
     }
 
+    // post {
+    //     success {
+    //         publishChecks name: 'Jenkins', conclusion: 'SUCCESS'
+    //     }
+    //     failure {
+    //         publishChecks name: 'Jenkins', conclusion: 'FAILURE'
+    //     }
+    // }
+
     post {
-        success {
-            publishChecks name: 'Jenkins', conclusion: 'SUCCESS'
-        }
-        failure {
-            publishChecks name: 'Jenkins', conclusion: 'FAILURE'
+    success {
+        script {
+            sendGitHubStatus("success", "Jenkins passed", "Jenkins / Scan")
+            }
         }
     }
 
