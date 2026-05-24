@@ -4,9 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main',
-                    credentialsId: 'ssh-jenkins',
-                    url: 'https://github.com/DobleADev/qa-practice-minimal-factory-game.git'
+                checkout scm
             }
         }
 
