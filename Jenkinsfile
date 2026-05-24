@@ -27,16 +27,4 @@ pipeline {
         }
     }
 
-
-    
-    post {
-            success {
-                publishChecks name: 'continuous-integration/jenkins', conclusion: 'SUCCESS'
-            }
-            failure {
-                publishChecks name: 'continuous-integration/jenkins', conclusion: 'FAILURE'
-            }
-        }
-
-
 }
